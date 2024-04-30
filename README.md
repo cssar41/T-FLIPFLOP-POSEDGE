@@ -28,15 +28,51 @@ From the above characteristic table, we can directly write the next state equati
 
 **Procedure**
 
-/* write all the steps invloved */
+1.Define Module: Define a Verilog module for the T flip-flop with inputs (T, CLK) and outputs (Q, Q_bar).
+
+2.Declare Inputs and Outputs: Declare input and output ports for the module.
+
+3.Implement Flip-Flop Logic: Write Verilog code to implement the T flip-flop logic based on its functional table. Use a synchronous always @(posedge CLK) block to trigger the flip-flop on the positive edge of the clock signal.
+
+4.Simulate Using Testbench: Write a Verilog testbench to simulate the behavior of the T flip-flop under different input conditions.
+
+5.Apply Input Stimuli: In the testbench, apply various combinations of input stimuli (T, CLK) to cover all possible input states.
+
+6.Verify Output Behavior: Verify that the output behavior of the T flip-flop matches the expected behavior defined by its functional table.
+
+7.Check for Race Conditions: Ensure that there are no race conditions or undefined states in the design by analyzing the timing and sequence of input changes.
 
 **PROGRAM**
-
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+# Developed by : Saravanan C
+# Register Number : 212222110041
+```
+module tflipflop( input clk, rst_n, input t,
+output reg q,
+output q_bar
+);
+always@(posedge clk) 
+begin 
+if(!rst_n)
+q<=0;
+else 
+begin
+q<=(t?~q:q);
+end
+end
+assign q_bar = ~q;
+endmodule
+```
 
 **RTL LOGIC FOR FLIPFLOPS**
 
+![323157887-53692c4c-9782-4c25-b9b5-83e9b83b92ff](https://github.com/CHANDRUMANIKANDAN/T-FLIPFLOP-POSEDGE/assets/118644502/9dbdd67c-2995-491b-ad79-802743f352be)
+
+
 **TIMING DIGRAMS FOR FLIP FLOPS**
 
+![323157215-132c0f71-6d83-4004-87b5-d06b526d9143](https://github.com/CHANDRUMANIKANDAN/T-FLIPFLOP-POSEDGE/assets/118644502/3cd5a309-44fe-427a-aac7-162f468bd72a)
+
+
 **RESULTS**
+
+Thus the program to implement a T flipflop using verilog and validating their functionality using their functional tables is successfully completed.
